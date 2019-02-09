@@ -118,7 +118,7 @@ class MultiNote {
   }
   selectNoteToAdd(x,y){
     let notesAvailable = document.getElementsByTagName('textarea')
-    notesAvailable = _.filter(notesAvailable, (note) => {
+    notesAvailable = Array.from(notesAvailable).filter( (note) => {
       return note.menuExtend === null
       //return ( note.style.visibility !== 'hidden' && note.id !== this.id )
     })
@@ -128,7 +128,7 @@ class MultiNote {
       mn.setBGcolor('red')
       mn.rect(x-5,y-20,80, notesAvailable.length * 20 + 20, '#cfb')
       mn.btnR('X', x, y-15, [], 12,12)
-      _.forEach(notesAvailable, (note, i) => {
+      Array.from(notesAvailable).forEach( (note, i) => {
         mn.text(
           note.id.slice('textarea'.length), 
           x,
@@ -862,7 +862,7 @@ class Note {
       function processResults( results ){
          let elementsJSON = JSON.parse( results )
          let families = []
-          families = _.map( elementsJSON, (x) => {
+          families = Array.from(elementsJSON).map( (x) => {
              let newNote = new Note().createFromJSON(x);
              if( newNote.textArea.noteFamily !== null){
                  console.log(newNote.textArea.noteFamily, newNote.textArea.noteFamily)
@@ -909,7 +909,7 @@ class Note {
     saveProject(){
         let elements = document.getElementsByTagName("TEXTAREA")
         let elementsDATA = [];
-              _.forEach( elements, (x) => {
+          Array.from(elements).forEach( (x) => {
                   if( x.id.slice(0, 'textArea'.length) === 'textArea' ) {
                       elementsDATA.push(new Note().logDATAformTextarea(x) );
                   }
