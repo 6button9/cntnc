@@ -91,9 +91,6 @@ class Loader{
       this.myDoc.body.appendChild(myStyle) 
       console.log(myStyle)
     }
-    loadGoogleMaps(){
-      this.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC5-wNIazwnWmFq_M5whAbboCvwS_4PK4c')
-    }
     loadBootstrapsRCSS(){
       let myStyle = this.myDoc.createElement('link')
       myStyle.setAttribute('rel', "stylesheet")
